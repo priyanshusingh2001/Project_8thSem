@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    {{!-- CSS --}}
+    <link rel="stylesheet" href="css/style.css">
+    {{!-- Boxicon CSS --}}
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    {{>navbar}}
+     <section class="container forms">
+        <div class="form register">
+            <div class="form-content">
+                <header>SignUp</header>
+
+                <form action="/register" method="POST">
+                    <div class="field input-field">
+                        <input type="text" placeholder="Full Name" class="fname" name="fname" required>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="text" placeholder="Roll Number" class="roll" name="roll" required>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="email" placeholder="Email" class="input" name="email" required>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="phone" placeholder="Phone" class="input" name="phone" required>
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password" name="password" required>
+                        
+                    </div>
+
+                    <div class="field input-field">
+                        <input type="password" placeholder="Confirm Password" class="password" name="cpassword" required>
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <div class="account-selector">
+                        <input type="radio" name="type" id="student" value="Student" class="text-sm mx-1" checked="">
+                        <label for="student">Student</label>
+                        <input type="radio" name="type" id="faculty" value="Faculty" class="text-sm mx-1">
+                        <label for="faculty">Faculty</label>
+                    </div>
+
+                    <div class="gender-selector">
+                        <label classfor="male">
+                            <input type="radio" name="gender" id="male" value="Male" class="text-sm mx-2" checked="">
+                            <span> Male </span>
+                        </label>
+                        <label for="female">
+                            <input type="radio" name="gender" id="female" value="Female" class="text-sm mx-2">
+                            <span> Female </span>
+                        </label>
+                        <label for="others">
+                            <input type="radio" name="gender" id="others" value="Others" class="text-sm mx-2">
+                            <span> Others </span>
+                        </label> 
+                    </div>
+
+                    <input type="submit" class="field button-field btnRegister" name="btnRegister" value="SignUp">
+
+                    <div class="form-link">
+                        <span>Already have an account? <a href="/login" class="link login-link">Login</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+     </section>
+
+     {{!-- JavaScript --}}
+     <script >
+        pwShowHide = document.querySelectorAll(".eye-icon");
+        pwShowHide.forEach(eyeIcon => {
+            eyeIcon.addEventListener("click", () => {
+            let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+            
+            pwFields.forEach(password => {
+                if(password.type === "password"){
+                    password.type = "text";
+                    eyeIcon.classList.replace("bx-hide", "bx-show");
+                    return;
+                }
+                password.type = "password";
+                eyeIcon.classList.replace("bx-show", "bx-hide");
+            })
+        })
+    })
+     </script>
+    
+</body>
+</html>
